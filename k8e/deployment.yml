@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: fastapi-deployment
-  namespace: fastapi-dev
+  namespace: fastapi-{env}
 spec:
   replicas: 1
   selector:
@@ -17,6 +17,13 @@ spec:
       - name: fastapi-container
         image: dihoda/fast-api:fastapi-0.0.2
         command: ["python3", "main.py", "Tel-Aviv", "IL"]
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
       volumeMounts:
       - name: config-volume
         mountPath: /src/config
