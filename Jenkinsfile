@@ -24,7 +24,7 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
                 script {
-                    sh "kubectl --kubeconfig=${KUBECONFIG} --context=${ENVIRONMENT} apply -f fastapi/${K8S_DEPLOYMENT_NAME} -n ${K8S_NAMESPACE}"
+                    sh "kubectl --kubeconfig=${KUBECONFIG} --context=${ENVIRONMENT} apply -f fastapi/k8e/${K8S_DEPLOYMENT_NAME} -n ${K8S_NAMESPACE}"
                 }
             }
         }
