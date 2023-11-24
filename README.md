@@ -23,20 +23,22 @@ Welcome to the FastAPI Weather App repository! This application leverages FastAP
 
 ### Getting Started
 
-To get started with the FastAPI Weather App, follow these steps:
-
+To begin using the FastAPI Weather App, you have two options:
+Option 1:
 1. Clone the repository.
 2. Set up your configuration in `config.py`.
 3. Build the Docker image using the provided `Dockerfile`.
 4. Run the Docker container.
 5. Access the FastAPI documentation and start fetching weather data!
 
-For Kubernetes deployment, check the `k8e` directory for Helm chart and deployment files.
+Option 2:
+Utilize Kubernetes deployment:
+
+Check the k8e directory for deployment files.
+If needed, make adjustments to the ConfigMap values in the configmap.yaml file or update the image tag, city, and country parameters within the containers section of the deployment file."
+
 
 ### Dependencies
+Docker
 
-Ensure you have the necessary dependencies listed in `requirements.txt` installed to run the FastAPI Weather App successfully.
 
-### Additional Information
-
-Feel free to explore, modify, and enhance the application according to your requirements. Happy coding!
