@@ -42,3 +42,49 @@ If needed, make adjustments to the ConfigMap values in the configmap.yaml file o
 Docker
 
 
+## Jenkinsfile for FastAPI Deployment
+
+This Jenkinsfile is designed to automate the deployment of a FastAPI application to a Kubernetes cluster. The pipeline consists of two stages: checking out the source code from a GitHub repository and deploying the application to Kubernetes.
+
+### Prerequisites
+
+- **Jenkins:** Ensure that you have Jenkins installed and configured with the necessary plugins for GitHub integration and Kubernetes deployments.
+
+### Usage
+
+1. **Configure Jenkins:**
+   - Set up Jenkins with the required credentials:
+     - `fastapi-id`: Kubernetes configuration credentials.
+     - `github-credentials-id`: GitHub credentials for repository access.
+
+2. **Pipeline Parameters:**
+   - This pipeline requires a user to select the target environment during execution. The available options are 'dev', 'stage', and 'prod.'
+
+3. **GitHub Repository:**
+   - Update the `GITHUB_REPO_URL` variable in the Jenkinsfile to point to your FastAPI application's GitHub repository.
+
+4. **Pipeline Execution:**
+   - Run the Jenkins job, and it will prompt you to select the target environment before starting the deployment pipeline.
+
+### Jenkinsfile Overview
+
+- **Agent:** The pipeline is configured to run on any available Jenkins agent.
+  
+- **Environment Variables:**
+  - `KUBECONFIG`: Kubernetes configuration credentials.
+  - `K8S_NAMESPACE`: Target Kubernetes namespace.
+  - `K8S_DEPLOYMENT_NAME`: Name of the Kubernetes deployment.
+  - `GITHUB_REPO_URL`: URL of the GitHub repository.
+
+- **Stages:**
+  1. **Checkout:**
+     - Clones the GitHub repository to the Jenkins workspace.
+
+  2. **Deploy to Kubernetes:**
+     - Uses `kubectl` to apply the Kubernetes deployment YAML from the GitHub repository to the specified environment.
+
+### Example Usage
+
+```bash
+Jenkins Job: FastAPI-Deployment
+Parameters: ENVIRONMENT = dev
