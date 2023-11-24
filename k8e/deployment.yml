@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fastapi-deployment
+  namespace: fastapi-dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fastapi
+  template:
+    metadata:
+      labels:
+        app: fastapi
+    spec:
+      containers:
+      - name: fastapi-container
+        image: dihoda/fast-api:fastapi-0.0.2
+        command: ["python3", "main.py", "Tel-Aviv", "IL"]
+      volumeMounts:
+      - name: config-volume
+        mountPath: /src/config
+      volumes:
+      - name: config-volume
+        configMap:
+          name: fastapi-config
