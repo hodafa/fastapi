@@ -9,6 +9,7 @@ Welcome to the FastAPI Weather App repository! This application leverages FastAP
 - **`k8e`**: Helm chart for the FastAPI Weather App.
   - `deployment.yaml`: Kubernetes deployment configuration.
   - `configmap.yaml`: ConfigMap for configuration settings.
+  - `service.yaml`: Expose the FastAPI application to external access within the cluster using a NodePort service on port 8000, allowing communication from outside the cluster
 
 - **`src`**: Source code for the FastAPI Weather App.
   - `config.py`: Configuration settings for the application.
